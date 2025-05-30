@@ -1,0 +1,15 @@
+{
+    "name": "riyad/denwallo",
+    "autoload": {
+        "psr-4": {
+            "Denwallo\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "Airdeaine",
+            "email": "riyad.rdn.pro@gmail.com"
+        }
+    ],
+    "require": {}
+}
