@@ -3,7 +3,9 @@ require("vendor/autoload.php");
 use Denwallo\controllers\MainController;
 use Denwallo\controllers\users\UserController;
 use Denwallo\controllers\users\AdminController;
+use Denwallo\controllers\ProduitController;
 
+session_start();
 
 define("ROOT", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
 
@@ -16,6 +18,13 @@ if (empty($_GET['page'])) {
 $mainController = new MainController();
 $userController = new UserController();
 $adminController = new AdminController();
+$produitController = new ProduitController();
+
+function showArray($array) {
+    echo"<pre>";
+    print_r($array);
+    echo"</pre>";
+}
 
 
 try {
@@ -23,6 +32,7 @@ try {
 
         case "accueil":
             $mainController->homePage();
+            showArray($_SESSION);
             break;
 
         case "nos_smartphone":
@@ -47,13 +57,15 @@ try {
                 $mainController->produitPage();
             }
 
-            switch ($url[1]) {
-                case 'detailProduit':
-                    $mainController->detailsPage();
-                    break;
+            if (!empty($url[1])) {
+                switch ($url[1]) {
+                    case 'detailProduit':
+                        $mainController->detailsPage();
+                        break;
 
-                default:
-                    throw new Exception("Le produit n'existe pas");
+                    default:
+                        throw new Exception("Le produit n'existe pas");
+            }
             }
 
             break;

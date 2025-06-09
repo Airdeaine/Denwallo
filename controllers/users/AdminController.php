@@ -16,7 +16,6 @@ class AdminController extends Controller {
                 "description"=> "Page de connexion de l'administrateur",
                 "view"=> "./views/pages/users/admin/loginAdminPage.php",
                 "layout"=> "./views/components/layoutAdmin.php",
-                "isCreator"=> $this->isCreator(),
                 "isAdmin"=>$this->isAdmin()
             ];
             $this->renderPage($datas_page);
@@ -31,35 +30,35 @@ class AdminController extends Controller {
 
     public function adminPage() {
 
-        //   if(!$this->isConnected()) {
+        if($this->isAdmin()) {
 
         $datas_page = [
                 "title"=> "Administration",
                 "description"=> "Page de l'administrateur",
                 "view"=> "./views/pages/users/admin/adminPage.php",
                 "layout"=> "./views/components/layoutAdmin.php",
-                "isCreator"=> $this->isCreator(),
                 "isAdmin"=>$this->isAdmin()
             ];
             $this->renderPage($datas_page);
 
-        // }else{
+        }else{
 
-            // header("Location:".ROOT."accueil");
+            header("Location:".ROOT."accueil");
 
-        // } 
+        } 
         
     }
     public function produitPage() {
 
-        //   if(!$this->isConnected()) {
+        $allPhones = $this->produitModel->getAllPhones();
 
         $datas_page = [
                 "title"=> "Produits",
                 "description"=> "Page de gestion des produits",
                 "view"=> "./views/pages/users/admin/produitPage.php",
                 "layout"=> "./views/components/layoutAdmin.php",
-                "isCreator"=> $this->isCreator(),
+                "produits"=>$allPhones,
+                "isClient"=> $this->isClient(),
                 "isAdmin"=>$this->isAdmin()
             ];
             $this->renderPage($datas_page);
@@ -80,7 +79,7 @@ class AdminController extends Controller {
                 "description"=> "Formulaire permettant d'ajouter un produit",
                 "view"=> "./views/pages/users/admin/addProduitPage.php",
                 "layout"=> "./views/components/layoutAdmin.php",
-                "isCreator"=> $this->isCreator(),
+                "isClient"=> $this->isClient(),
                 "isAdmin"=>$this->isAdmin()
             ];
             $this->renderPage($datas_page);
@@ -94,7 +93,7 @@ class AdminController extends Controller {
     }
 
     public function logout() {
-
+        session_destroy();
         header("Location:".ROOT);
         
     }

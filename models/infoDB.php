@@ -2,7 +2,7 @@
 
 namespace Denwallo\models;
 
-define("mysql","localhost");
-define("dbname","monsterPOO");
-define("user","root");
-define("password","");
+define("mysql","db");
+define("dbname","denwallo");
+define("user","denuser");
+define("password","denpass");

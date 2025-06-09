@@ -13,7 +13,7 @@
                 "description"=> "Page d'accueil du site Denwallo",
                 "view"=> "./views/pages/homePage.php",
                 "layout"=> "./views/components/layout.php",
-                "isCreator"=> $this->isCreator(),
+                "isClient"=> $this->isClient(),
                 "isAdmin"=>$this->isAdmin()
                 
             ];
@@ -23,12 +23,14 @@
         }
         public function smartphonePage() {
 
+            
+
             $datas_page = [
                 "title"=> "Nos marques",
                 "description"=> "Page des marques",
                 "view"=> "./views/pages/smartphonePage.php",
                 "layout"=> "./views/components/layout.php",
-                "isCreator"=> $this->isCreator(),
+                "isClient"=> $this->isClient(),
                 "isAdmin"=>$this->isAdmin()
                 
             ];
@@ -43,7 +45,7 @@
                 "description"=> "Page du panier",
                 "view"=> "./views/pages/panierPage.php",
                 "layout"=> "./views/components/layout.php",
-                "isCreator"=> $this->isCreator(),
+                "isClient"=> $this->isClient(),
                 "isAdmin"=>$this->isAdmin()
                 
             ];
@@ -58,7 +60,7 @@
                 "description"=> "Page de l'espace client",
                 "view"=> "./views/pages/espacePage.php",
                 "layout"=> "./views/components/layout.php",
-                "isCreator"=> $this->isCreator(),
+                "isClient"=> $this->isClient(),
                 "isAdmin"=>$this->isAdmin()
                 
             ];
@@ -73,7 +75,7 @@
                 "description"=> "Page pour contacter le support",
                 "view"=> "./views/pages/contactPage.php",
                 "layout"=> "./views/components/layout.php",
-                "isCreator"=> $this->isCreator(),
+                "isClient"=> $this->isClient(),
                 "isAdmin"=>$this->isAdmin()
                 
             ];
@@ -83,12 +85,15 @@
         }
         public function produitPage() {
 
+            $allPhones = $this->produitModel->getAllPhones();
+
             $datas_page = [
                 "title"=> "Nos produits",
                 "description"=> "Page des produits",
                 "view"=> "./views/pages/produitPage.php",
                 "layout"=> "./views/components/layout.php",
-                "isCreator"=> $this->isCreator(),
+                "produits"=> $allPhones,
+                "isClient"=> $this->isClient(),
                 "isAdmin"=>$this->isAdmin()
                 
             ];
@@ -103,7 +108,7 @@
                 "description"=> "Page contenant les details du produit selectionné",
                 "view"=> "./views/pages/details_produitPage.php",
                 "layout"=> "./views/components/layout.php",
-                "isCreator"=> $this->isCreator(),
+                "isClient"=> $this->isClient(),
                 "isAdmin"=>$this->isAdmin()
                 
             ];
@@ -111,5 +116,43 @@
             $this->renderPage($datas_page);
 
         }
+        public function detailsAdminPage($id) {
+
+            $produit = $this->produitModel->getPhoneById($id);
+
+            $datas_page = [
+                "title"=> "Details du produit",
+                "description"=> "Page contenant les details du produit selectionné",
+                "view"=> "./views/pages/users/admin/detailsPage.php",
+                "layout"=> "./views/components/layoutAdmin.php",
+                "produit"=> $produit,
+                "isClient"=> $this->isClient(),
+                "isAdmin"=>$this->isAdmin()
+                
+            ];
+
+            $this->renderPage($datas_page);
+
+        }
+        public function updateProduit($id) {
+
+            $produit = $this->produitModel->getPhoneById($id);
+
+            $datas_page = [
+                "title"=> "Details du produit",
+                "description"=> "Page contenant les details du produit selectionné",
+                "view"=> "./views/pages/users/admin/updateProduitPage.php",
+                "layout"=> "./views/components/layoutAdmin.php",
+                "produit"=> $produit,
+                "isClient"=> $this->isClient(),
+                "isAdmin"=>$this->isAdmin()
+                
+            ];
+
+            $this->renderPage($datas_page);
+
+        }
+
+
 
     }

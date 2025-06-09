@@ -10,40 +10,43 @@ switch ($url[1]) {
         $userController->registerPage();
         break;
 
-    // case "register":
-    //     // showArray($_POST);
-    //     $name = htmlspecialchars($_POST["name"]);
-    //     $password = htmlspecialchars($_POST["password"]);
+    case "register":
+        // showArray($_POST);
+        $prenom = htmlspecialchars($_POST["prenom"]);
+        $nom = htmlspecialchars($_POST["nom"]);
+        $telephone = htmlspecialchars($_POST["telephone"]);
+        $mail = htmlspecialchars($_POST["mail"]);
+        $adresse = htmlspecialchars($_POST["adresse"]);
+        $password = htmlspecialchars($_POST["password"]);
 
-    //     if(empty($name) || empty($password)) {
-    //         throw new Exception("Veuillez remplir tous les champs");
-    //     }
-    //     $usersControllers->createAccount($name, $password);
-    //     break;
+        if(empty($prenom) || empty($nom) || empty($telephone) || empty($mail) || empty($adresse) || empty($password) ) {
+            throw new Exception("Veuillez remplir tous les champs");
+        }
+        $userController->createAccount($prenom, $nom, $telephone, $mail, $adresse, $password);
+        break;
 
     case 'connexion':
         $userController->loginPage();
         break;
 
-    // case 'login':
-    //     // showArray($_POST);
-    //     $name = htmlspecialchars($_POST["name"]);
-    //     $password = htmlspecialchars($_POST["password"]);
+    case 'login':
+        $mail = htmlspecialchars($_POST["mail"]);
+        $password = htmlspecialchars($_POST["password"]);
 
-    //     if(empty($name) || empty($password)) {
-    //         throw new Exception("Veuillez remplir tous les champs");
-    //     }
-    //     $usersControllers->login($name, $password);
-    //     break;
+        if(empty($mail) || empty($password)) {
+            throw new Exception("Veuillez remplir tous les champs");
+        }
+        $userController->login($mail, $password);
+        break;
 
     // case "profil":
     //     $usersControllers->profilPage();
     //     break;
 
-    // case "logout":
+    case "logout":
 
-    //     $usersControllers->logout();
-    //     break;
+        $userController->logout();
+        break;
 
     // case "deleteAccount":
         

@@ -6,7 +6,7 @@
 
             <h1>Inscription</h1>
 
-            <form action="inscription.html">
+            <form action="register" method="POST">
 
                 <div class="prenom">
                     <label for="email">Prenom :</label>
@@ -33,9 +33,9 @@
                     <input type="text" name="adresse" id="adresse">
                 </div>
 
-                <div class="mdp">
-                    <label for="mdp">Mot de passe :</label>
-                    <input type="text" name="mdp" id="mdp">
+                <div class="password">
+                    <label for="password">Mot de passe :</label>
+                    <input type="text" name="password" id="password">
                 </div>
 
                 <div class="bouton">

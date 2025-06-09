@@ -523,6 +523,7 @@ form > div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 .top-detailprod > button {
@@ -605,12 +606,24 @@ form > div {
 
 .box-formAddProduit {
     background-color: #5E98E4;
-    height: 950px;
+    height: 97%;
     width: 700px;
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.btn-modifier{
+    width: 150px;
+    height: 80%;
+    background-color: #5E98E4;
+    font-size: 32px;
+    display: flex;
+    color: #2D2929;
+    justify-content: center;
+    border-radius: 20px;
+    font-weight: bold;   
 }
 
 /* Page produit admin */

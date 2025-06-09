@@ -18,104 +18,24 @@
             </div>
 
             <div class="btn_ajoutProduit">
-                <a class="add_btn" href="<?=ROOT?>admin/ajouterProduit">Ajouter +</a>
+                <a class="add_btn" href="<?= ROOT ?>admin/ajouterProduit">Ajouter +</a>
             </div>
 
         </div>
 
         <div class="cards_prod">
 
-            <a href="detail_produit.html">
-                <div class="card_prod">
-                    <img style="height: 150px;" src="../public/images/iphone-xr.jpg" alt="">
-                    <span>iPhone XR</span>
-                </div>
-            </a>
-
-            <a href="detail_produit.html">
-                <div class="card_prod">
-                    <img style="height: 150px;" src="../public/images/iphone-xr.jpg" alt="">
-                    <span>iPhone XR</span>
-                </div>
-            </a>
-
-            <!-- <a href="">
-                    <div class="card_prod">
-                         
-                    </div>
-                </a>
-
-                <a href="">
-                    <div class="card_prod">
-                         
-                    </div>
-                </a>
-
-                <a href="">
-                    <div class="card_prod">
-                         
-                    </div>
-                </a>
-
-                <a href="">
-                    <div class="card_prod">
-                         
-                    </div>
-                </a>
-
-                <a href="">
-                    <div class="card_prod">
-                         
-                    </div>
-                </a>
-
-                <a href="">
-                    <div class="card_prod">
-                         
-                    </div>
-                </a>
-
-                <a href="">
-                    <div class="card_prod">
-                         
-                    </div>
-                </a>
-
-                <a href="">
-                    <div class="card_prod">
-                         
-                    </div>
-                </a>
-
-                <a href="">
-                    <div class="card_prod">
-                         
-                    </div>
-                </a>
-
-                <a href="">
-                    <div class="card_prod">
-                         
-                    </div>
-                </a>
-
-                <a href="">
-                    <div class="card_prod">
-                         
-                    </div>
-                </a>
-
-                <a href="">
-                    <div class="card_prod">
-                         
-                    </div>
-                </a>
-
-                <a href="">
-                    <div class="card_prod">
-                         
-                    </div>
-                </a> -->
+            <?php foreach ($produits as $produit): ?>
+                <form action="<?= ROOT ?>admin/detail_produit" method="POST">
+                    <input type="hidden" name="id" value="<?= $produit['id'] ?>">
+                    <button type="submit" style="all: unset; cursor: pointer;">
+                        <div class="card_prod">
+                            <img style="height: 150px;" src="../public/images/<?= $produit['image'] ?>" alt="">
+                            <span><?= $produit['modele'] ?></span>
+                        </div>
+                    </button>
+                </form>
+            <?php endforeach ?>
 
         </div>
 

@@ -2,12 +2,18 @@
 
 namespace Denwallo\controllers;
 
+use Denwallo\models\users\UserModel;
+use Denwallo\models\ProduitModel;
+
 abstract class Controller
 {
+    protected $userModel;
+    protected $produitModel;
 
     public function __construct()
     {
-
+        $this->userModel = new UserModel;
+        $this->produitModel = new ProduitModel;
 
     }
 
@@ -23,15 +29,15 @@ abstract class Controller
     }
 
     public function isConnected(){
-        return (!empty($_SESSION["name"]));
+        return (!empty($_SESSION["mail"]));
     }
-    public function isCreator(){
-        return (!empty($_SESSION["name"]) && 
-        ($_SESSION['statut'] === "creator" || $_SESSION['statut'] === "admin"));
+    public function isClient(){
+        return (!empty($_SESSION["mail"]) && 
+        ($_SESSION['role'] === "client"));
     }
     public function isAdmin(){
-        return (!empty($_SESSION["name"]) && 
-        ($_SESSION['statut'] === "admin"));
+        return (!empty($_SESSION["mail"]) && 
+        ($_SESSION['role'] === "admin"));
     }
 
 }
