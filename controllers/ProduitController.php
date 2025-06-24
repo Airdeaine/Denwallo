@@ -23,11 +23,14 @@ class ProduitController extends Controller
     public function updateProduit($id,$marque, $modele, $image, $stockage, $couleur, $os, $ram, $resolution, $taille, $prix)
     {
 
-        if ($this->produitModel->updateProduitDB($id,$marque, $modele, $image, $stockage, $couleur, $os, $ram, $resolution, $taille, $prix)) {
+        if ($this->produitModel->updateProduitDB($id,$marque,
+                                                 $modele, $image, $stockage,
+                                                 $couleur, $os, $ram, 
+                                                 $resolution, $taille, $prix)) {
             header("Location:" . ROOT . "admin/adminProduit");
             exit;
         } else {
-            throw new Exception("Impossible de créer le personnage !");
+            throw new Exception("Impossible de créer le nouveau produit !");
         }
 
     }

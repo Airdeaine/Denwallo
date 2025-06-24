@@ -21,14 +21,14 @@
 
                     <h1>Details</h1>
 
-                    <p>Marque :</p>
-                    <p>Modèle :</p>
-                    <p>Stockage :</p>
-                    <p>Couleur :</p>
-                    <p>Système d'exploitation :</p>
-                    <p>RAM :</p>
-                    <p>Résolution :</p>
-                    <p>Taille :</p>
+                    <p>Marque : <?= ucfirst($produit['marque']) ?></p>
+                    <p>Modèle : <?= ucfirst($produit['modele']) ?></p>
+                    <p>Stockage : <?= ucfirst($produit['stockage']) ?> Go</p>
+                    <p>Couleur : <?= ucfirst($produit['couleur']) ?></p>
+                    <p>Système d'exploitation : <?= ucfirst($produit['os']) ?></p>
+                    <p>RAM : <?= ucfirst($produit['ram']) ?></p>
+                    <p>Résolution : <?= ucfirst($produit['resolution']) ?></p>
+                    <p>Taille : <?= ucfirst($produit['taille']) ?></p>
 
                 </div>
 

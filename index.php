@@ -1,9 +1,13 @@
 <?php
+
+
 require("vendor/autoload.php");
 use Denwallo\controllers\MainController;
 use Denwallo\controllers\users\UserController;
 use Denwallo\controllers\users\AdminController;
 use Denwallo\controllers\ProduitController;
+
+
 
 session_start();
 
@@ -60,7 +64,8 @@ try {
             if (!empty($url[1])) {
                 switch ($url[1]) {
                     case 'detailProduit':
-                        $mainController->detailsPage();
+                        $id = $_POST['id'];
+                        $mainController->detailsPage($id);
                         break;
 
                     default:

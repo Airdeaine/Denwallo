@@ -6,14 +6,18 @@ use PDO;
 
 require_once("./models/infoDB.php");
 abstract class PdoModel {
-    protected static $pdo;
+    public static $pdo;
 
-    protected static function setDB() {
+    public static function setDB() {
 
         if (self::$pdo === null) {
-        self::$pdo = new PDO("mysql:host=".mysql.";dbname=".dbname,user,password,
+        self::$pdo = new PDO("mysql:host=".mysql.
+                                ";dbname=".dbname,
+                                user,
+                                password,
         [PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION]);
-        self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        self::$pdo->setAttribute(PDO::ATTR_ERRMODE,
+                                 PDO::ERRMODE_EXCEPTION);
         }
         return self::$pdo;
     }

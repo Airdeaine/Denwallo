@@ -15,7 +15,7 @@
 
                 <div class="password">
                     <label for="password">Mot de passe :</label>
-                    <input type="text" name="password" id="password">
+                    <input type="password" name="password" id="password">
                 </div>
 
                 <div class="bouton">

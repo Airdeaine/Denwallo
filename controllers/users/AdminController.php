@@ -48,9 +48,12 @@ class AdminController extends Controller {
         } 
         
     }
+    
     public function produitPage() {
 
         $allPhones = $this->produitModel->getAllPhones();
+
+        if($this->isAdmin()) {
 
         $datas_page = [
                 "title"=> "Produits",
@@ -63,13 +66,14 @@ class AdminController extends Controller {
             ];
             $this->renderPage($datas_page);
 
-        // }else{
+        }else{
 
-            // header("Location:".ROOT."accueil");
+            header("Location:".ROOT."accueil");
 
-        // } 
+        } 
         
     }
+
     public function addProduitPage() {
 
         //   if(!$this->isConnected()) {
